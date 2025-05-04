@@ -5,10 +5,10 @@ pipeline {
         maven 'Maven 3.9.1'
     }
 
-    stages {
-        stage('Clone Repo') {
+     stages {
+        stage('Checkout SCM') {
             steps {
-                git 'https://github.com/barnamdas/spring-petclinic'
+                git branch: 'main', url: 'https://github.com/barnamdas/spring-petclinic.git'
             }
         }
 
