@@ -24,17 +24,7 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([string(credentialsId: 'dockerhub-password', variable: 'DOCKER_PASSWORD')]) {
-                    sh """
-                    echo "$DOCKER_PASSWORD" | docker login -u yourdockerhubusername --password-stdin
-                    docker tag petclinic-app yourdockerhubusername/petclinic-app:latest
-                    docker push yourdockerhubusername/petclinic-app:latest
-                    """
-                }
-            }
-        }
+       
 
         stage('Deploy to Kubernetes') {
             steps {
